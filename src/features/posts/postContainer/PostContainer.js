@@ -10,7 +10,7 @@ export default function PostContainer() {
     <section>
       <h2>Post Container</h2>
       {posts.map(post => {
-        return <Post key={post.id} {...post} />
+        return <Post key={post.data.id} post={post.data} />
       })}
     </section>
   )
