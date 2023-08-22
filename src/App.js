@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import Navbar from './features/navBar/NavBar';
+import NavBar from './features/navBar/NavBar'
+import PostsContainer from './features/posts/postsContainer/PostsContainer';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <Navbar />
+        <NavBar />
       </header>
+      <main>
+        <PostsContainer />
+      </main>
     </div>
   );
 }
