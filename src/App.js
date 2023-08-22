@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavBar from './features/navBar/NavBar'
-import PostsContainer from './features/posts/postsContainer/PostsContainer';
+import PostContainer from './features/posts/postContainer/PostContainer';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <PostsContainer />
+        <PostContainer />
       </main>
     </div>
   );
