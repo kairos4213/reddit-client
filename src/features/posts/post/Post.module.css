@@ -1,0 +1,15 @@
+.post {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.btn {
+    width: 2rem;
+    margin: 1rem;
+}
+
+.votes {
+    display: flex;
+    align-items: center;
+}

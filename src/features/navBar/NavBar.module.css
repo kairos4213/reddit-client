@@ -1,0 +1,21 @@
+.navBar {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%; 
+}
+
+.title {
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    margin-left: 0.5rem;
+}
+
+.navIcon {
+    width: 1.75em;
+    margin-top: 1rem;
+}
+
+.searchBar {
+    margin-top: 0.75rem;
+}
