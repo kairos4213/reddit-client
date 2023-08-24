@@ -3,7 +3,8 @@ import styles from './Post.module.css'
 import { UpArrow, DownArrow } from '../../../assets/icons/icons'
 
 export default function Post({ post }) {
-    const { title, author, ups, permalink } = post
+    const { title, author, ups, permalink, preview} = post
+    console.log(preview)
 
     return (
         <article className={styles.post}>
@@ -18,7 +19,7 @@ export default function Post({ post }) {
                     <DownArrow />
                 </button>
             </span>
-            <div></div>
+            <img src={preview} alt={title} />
         </article>
     )
 }
