@@ -1,43 +1,58 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { fetchPopularPosts, fetchSearch } from "../api/redditApi";
 // import { postsData } from "../../postsData";
-
-const popularUrl = 'https://www.reddit.com/r/popular.json'
-const searchUrl = 'https://www.reddit.com/search.json?q='
 
 const initialState = {
     posts: [],
-    isLoading: true
+    searchTerm: '',
+    isLoading: true,
+    error: null
 };
 
 export const getPopularPosts = createAsyncThunk(
-    'posts/getPopularPosts', () => {
-        return fetch(popularUrl)
-            .then((response) => response.json())
-            .catch((error) => console.log(error));
-    }
+    'posts/getPopularPosts',
+    fetchPopularPosts
+)
+
+export const getSearch = createAsyncThunk(
+    'posts/getSearch',
+    fetchSearch
 )
 
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
     reducers: {
-        search: (state, action) => {
-            state.posts = [action.payload];
+        setSearchTerm(state, action) {
+            state.searchTerm = action.payload
         }
     },
-    extraReducers: {
-        [getPopularPosts.pending]: (state) => {
+    extraReducers: (builder) => {
+        builder.addCase(getPopularPosts.pending, (state) => {
             state.isLoading = true;
-        },
-        [getPopularPosts.fulfilled]: (state, action) => {
-            console.log(action.payload.data.children)
+        })
+        builder.addCase(getPopularPosts.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.posts.push(action.payload.data.children)
+        })
+        builder.addCase(getPopularPosts.rejected, (state, action) => {
+            state.isLoading = false
+            state.error = action.error.message
+        })
+        builder.addCase(getSearch.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getSearch.fulfilled, (state, action) => {
             state.isLoading = false
             state.posts = action.payload.data.children
-        },
-        [getPopularPosts.rejected]: (state) => {
+        })
+        builder.addCase(getSearch.rejected, (state, action) => {
             state.isLoading = false
-        }
+            state.error = action.error.message
+        })
     }
 });
+
+export const { setSearchTerm } = postsSlice.actions;
 
 export default postsSlice.reducer;

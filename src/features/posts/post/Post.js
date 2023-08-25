@@ -4,7 +4,7 @@ import { UpArrow, DownArrow } from '../../../assets/icons/icons'
 
 export default function Post({ post }) {
     const { title, author, ups, permalink, preview} = post
-    console.log(preview)
+    // console.log(preview) -- working on adding images
 
     return (
         <article className={styles.post}>

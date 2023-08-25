@@ -6,7 +6,7 @@ import PostContainer from './features/posts/postContainer/PostContainer';
 import { getPopularPosts } from './features/posts/postsSlice';
 
 function App() {
-  const {posts, isLoading} = useSelector((state) => state.posts)
+  const { posts, searchTerm, isLoading } = useSelector((state) => state.posts)
   const dispatch = useDispatch()
 
   useEffect(() => {

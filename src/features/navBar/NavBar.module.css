@@ -12,10 +12,17 @@
 }
 
 .navIcon {
-    width: 1.75em;
+    width: 2.5rem;
     margin-top: 1rem;
+    background: transparent;
+    border: none;
+}
+
+.navIcon:hover {
+    cursor: pointer;
 }
 
 .searchBar {
     margin-top: 0.75rem;
+    margin-right: 0.5rem;
 }
