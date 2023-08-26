@@ -4,7 +4,6 @@ import { fetchPopularPosts, fetchSearch } from "../api/redditApi";
 
 const initialState = {
     posts: [],
-    searchTerm: '',
     isLoading: true,
     error: null
 };
@@ -22,18 +21,14 @@ export const getSearch = createAsyncThunk(
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {
-        setSearchTerm(state, action) {
-            state.searchTerm = action.payload
-        }
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getPopularPosts.pending, (state) => {
             state.isLoading = true;
         })
         builder.addCase(getPopularPosts.fulfilled, (state, action) => {
             state.isLoading = false
-            state.posts.push(action.payload.data.children)
+            state.posts = action.payload.data.children
         })
         builder.addCase(getPopularPosts.rejected, (state, action) => {
             state.isLoading = false
@@ -52,7 +47,5 @@ const postsSlice = createSlice({
         })
     }
 });
-
-export const { setSearchTerm } = postsSlice.actions;
 
 export default postsSlice.reducer;
