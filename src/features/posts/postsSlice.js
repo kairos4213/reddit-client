@@ -28,7 +28,7 @@ const postsSlice = createSlice({
         })
         builder.addCase(getPopularPosts.fulfilled, (state, action) => {
             state.isLoading = false
-            state.posts = action.payload.data.children
+            state.posts = action.payload
         })
         builder.addCase(getPopularPosts.rejected, (state, action) => {
             state.isLoading = false
@@ -39,7 +39,7 @@ const postsSlice = createSlice({
         })
         builder.addCase(getSearch.fulfilled, (state, action) => {
             state.isLoading = false
-            state.posts = action.payload.data.children
+            state.posts = action.payload
         })
         builder.addCase(getSearch.rejected, (state, action) => {
             state.isLoading = false

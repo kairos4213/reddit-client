@@ -7,12 +7,12 @@ import Post from '../post/Post'
 export default function PostContainer() {
   const { posts } = useSelector(state => state.posts);
 
+  const renderedPosts = posts.map(post => <Post key={post.id} post={post} />)
+
   return (
     <section className={styles.postContainer}>
       <h2>Post Container</h2>
-      {posts.map(post => {
-        return <Post key={post.data.id} post={post.data} />
-      })}
+      {renderedPosts}
     </section>
   )
 }

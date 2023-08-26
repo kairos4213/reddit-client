@@ -3,7 +3,7 @@ import styles from './Post.module.css'
 import { UpArrow, DownArrow } from '../../../assets/icons/icons'
 
 export default function Post({ post }) {
-    const { title, author, ups, permalink, preview} = post
+    const { title, author, ups, permalink, preview, url} = post
     // console.log(preview) -- working on adding images
 
     return (
@@ -19,7 +19,7 @@ export default function Post({ post }) {
                     <DownArrow />
                 </button>
             </span>
-            <img src={preview} alt={title} />
+            <img src={url} alt={title} />
         </article>
     )
 }

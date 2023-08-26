@@ -5,7 +5,7 @@ export async function fetchPopularPosts() {
     try {
         const response = await fetch(popularUrl);
         const data = await response.json();
-        return data
+        return data.data.children.map((post) => post.data)
     } catch (error) {
         return console.log(error);
     }
@@ -15,7 +15,7 @@ export async function fetchSearch(searchTerm) {
     try {
         const response = await fetch(searchUrl + searchTerm)
         const data = await response.json()
-        return data
+        return data.data.children.map((post) => post.data)
     } catch (error) {
         return console.log(error)
     }
